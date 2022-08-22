@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HomeBudget.Models.Category
+namespace HomeBudget.Models.Place
 {
-    public class CategoryDetail
+    public class PlaceListItem
     {
         public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
+        public string Name { get; set; }
     }
 }

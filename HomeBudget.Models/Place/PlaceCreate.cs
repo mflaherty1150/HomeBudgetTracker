@@ -5,13 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HomeBudget.Data
+namespace HomeBudget.Models.Place
 {
-    public class CategoryEntity
+    public class PlaceCreate
     {
-        [Key]
-        public int Id { get; set; }
         [Required]
-        public string Name { get; set; } = string.Empty;
+        public string Name { get; set; }
     }
 }

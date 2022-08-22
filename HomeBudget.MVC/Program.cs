@@ -18,8 +18,14 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IPlaceService, PlaceService>();
+builder.Services.AddScoped<ITransactionEntryService, TransactionEntryService>();
 
 builder.Services.AddAutoMapper(typeof(CategoryMapProfile));
+builder.Services.AddAutoMapper(typeof(AccountMapProfile));
+builder.Services.AddAutoMapper(typeof(PlaceMapProfile));
+builder.Services.AddAutoMapper(typeof(TransactionMapProfile));
 
 var app = builder.Build();
 

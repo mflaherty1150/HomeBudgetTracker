@@ -10,6 +10,12 @@ namespace HomeBudget.Data
         {
         }
 
+        public DbSet<AccountEntity> Accounts { get; set; }
         public DbSet<CategoryEntity> Categories { get; set; }
+        public DbSet<PlaceEntity> Places { get; set; }
+        public DbSet<TransactionEntry> Transactions { get; set; }
+        //public DbSet<AddressEntity> Addresses { get; set; }
+        //public DbSet<ProviderEntity> Providers { get; set; }
+        //public DbSet<StateEntity> States { get; set; }
     }
 }
