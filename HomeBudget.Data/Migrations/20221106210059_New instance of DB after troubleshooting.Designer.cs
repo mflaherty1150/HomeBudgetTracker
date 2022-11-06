@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HomeBudget.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220926161454_Initial testDb migratin")]
-    partial class InitialtestDbmigratin
+    [Migration("20221106210059_New instance of DB after troubleshooting")]
+    partial class NewinstanceofDBaftertroubleshooting
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,12 +53,15 @@ namespace HomeBudget.Data.Migrations
                     b.Property<Guid>("OwnerId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int?>("ProviderEntityId")
+                        .HasColumnType("int");
+
                     b.Property<int>("ProviderId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProviderId");
+                    b.HasIndex("ProviderEntityId");
 
                     b.ToTable("Accounts");
                 });
@@ -413,13 +416,9 @@ namespace HomeBudget.Data.Migrations
 
             modelBuilder.Entity("HomeBudget.Data.AccountEntity", b =>
                 {
-                    b.HasOne("HomeBudget.Data.ProviderEntity", "Provider")
+                    b.HasOne("HomeBudget.Data.ProviderEntity", null)
                         .WithMany("Accounts")
-                        .HasForeignKey("ProviderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Provider");
+                        .HasForeignKey("ProviderEntityId");
                 });
 
             modelBuilder.Entity("HomeBudget.Data.AddressEntity", b =>

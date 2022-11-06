@@ -15,7 +15,7 @@ namespace HomeBudget.MVC.Controllers
             _transactionEntryService = transactionEntryService;
         }
 
-        public async Task<IActionResult> Index(int id)
+        public async Task<IActionResult> Index(int id = 1)
         {
             var transactions = await _transactionEntryService.GetAllTransactionEntriesBySourceAccountId(id);
             return View(transactions);

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HomeBudget.Data.Migrations
 {
-    public partial class InitialtestDbmigratin : Migration
+    public partial class NewinstanceofDBaftertroubleshooting : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -214,7 +214,7 @@ namespace HomeBudget.Data.Migrations
                         column: x => x.StateId,
                         principalTable: "States",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -235,7 +235,7 @@ namespace HomeBudget.Data.Migrations
                         column: x => x.AddressId,
                         principalTable: "Addresses",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -250,17 +250,17 @@ namespace HomeBudget.Data.Migrations
                     OwnerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     InterestRate = table.Column<double>(type: "float", nullable: false),
                     Balance = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    ProviderId = table.Column<int>(type: "int", nullable: false)
+                    ProviderId = table.Column<int>(type: "int", nullable: false),
+                    ProviderEntityId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Accounts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Accounts_Providers_ProviderId",
-                        column: x => x.ProviderId,
+                        name: "FK_Accounts_Providers_ProviderEntityId",
+                        column: x => x.ProviderEntityId,
                         principalTable: "Providers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -283,25 +283,25 @@ namespace HomeBudget.Data.Migrations
                         column: x => x.SourceAccountId,
                         principalTable: "Accounts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Transactions_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Transactions_Places_PlaceId",
                         column: x => x.PlaceId,
                         principalTable: "Places",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Accounts_ProviderId",
+                name: "IX_Accounts_ProviderEntityId",
                 table: "Accounts",
-                column: "ProviderId");
+                column: "ProviderEntityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Addresses_StateId",
