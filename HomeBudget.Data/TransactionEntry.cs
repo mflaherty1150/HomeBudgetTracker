@@ -12,14 +12,24 @@ namespace HomeBudget.Data
     {
         [Key]
         public int Id { get; set; }
-        [ForeignKey("Account")]
-        public int SourceAccountId { get; set; }
+        
         [Required]
         public DateTime TransactionDate { get; set; }
-        [ForeignKey("PlaceEntit")]
-        public int PlaceId { get; set; }
-        [ForeignKey("CategoryEntity")]
-        public int CategoryId { get; set; }
+
         public decimal TransactionAmount { get; set; }
+
+        [ForeignKey(nameof(Account))]
+        public int SourceAccountId { get; set; }
+        
+        [ForeignKey(nameof(Place))]
+        public int PlaceId { get; set; }
+        
+        [ForeignKey(nameof(Category))]
+        public int CategoryId { get; set; }
+        
+
+        public virtual AccountEntity Account { get; set; }
+        public virtual PlaceEntity Place { get; set; }
+        public virtual CategoryEntity Category { get; set; }
     }
 }

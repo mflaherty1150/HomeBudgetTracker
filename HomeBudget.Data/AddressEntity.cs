@@ -16,8 +16,11 @@ namespace HomeBudget.Data
         public string AddressStreet { get; set; } = string.Empty;
         public string AddressStreet2 { get; set; } = string.Empty;
         public string City { get; set; } = string.Empty;
-        [ForeignKey("StateEntity")]
-        public int StateId { get; set; }
         public int Zip { get; set; }
+        
+        [ForeignKey(nameof(State))]
+        public int StateId { get; set; }
+
+        public virtual StateEntity State { get; set; }
     }
 }

@@ -12,11 +12,15 @@ namespace HomeBudget.Data
     {
         [Key]
         public int Id { get; set; }
+        public double RoutingNumber { get; set; }
+
         [Required]
         public string Name { get; set; } = string.Empty;
-        public double RoutingNumber { get; set; }
+        
         [ForeignKey("AddressEntity")]
         public int AddressId { get; set; }
+        
+        public virtual AddressEntity Address { get; set; }
         public virtual ICollection<AccountEntity> Accounts { get; set; } = new List<AccountEntity>();
     }
 }
