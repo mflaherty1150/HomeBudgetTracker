@@ -1,13 +1,17 @@
 ﻿using AutoMapper;
 using HomeBudget.Contracts;
 using HomeBudget.Data;
+using HomeBudget.Models.Account;
+using HomeBudget.Models.DropDownLists;
 using HomeBudget.Models.Transaction;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace HomeBudget.Services
 {
@@ -43,5 +47,11 @@ namespace HomeBudget.Services
         }
 
         public void SetUserId(Guid userId) => _userId = userId;
+
+        public List<AccountEntity> GetAccountsDropDown()
+        {
+            var accountsList = _context.Accounts.ToList();
+            return accountsList;
+        }
     }
 }

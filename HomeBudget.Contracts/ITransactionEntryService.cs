@@ -1,4 +1,7 @@
-﻿using HomeBudget.Models.Transaction;
+﻿using HomeBudget.Data;
+using HomeBudget.Models.DropDownLists;
+using HomeBudget.Models.Transaction;
+using System.Web.Mvc;
 
 namespace HomeBudget.Contracts
 {
@@ -7,5 +10,6 @@ namespace HomeBudget.Contracts
         Task<bool> CreateTransactionEntryAsync(TransactionCreate model);
         Task<List<TransactionListItem>> GetAllTransactionEntriesBySourceAccountId(int sourceAccountId);
         void SetUserId(Guid userId);
+        List<AccountEntity> GetAccountsDropDown();
     }
 }
